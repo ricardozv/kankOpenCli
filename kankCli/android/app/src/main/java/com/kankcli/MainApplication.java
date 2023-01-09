@@ -12,6 +12,8 @@ import com.facebook.soloader.SoLoader;
 import com.kankcli.newarchitecture.MainApplicationReactNativeHost;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
+import com.airbnb.android.react.maps.MapsPackage;
+
 
 public class MainApplication extends Application implements ReactApplication {
 
@@ -22,6 +24,14 @@ public class MainApplication extends Application implements ReactApplication {
           return BuildConfig.DEBUG;
         }
 
+          @Override
+          protected List<ReactPackage> getPackages() {
+          return Arrays.<ReactPackage>asList(
+          new MainReactPackage(),
+          new MapsPackage()
+          );
+        }
+
         @Override
         protected List<ReactPackage> getPackages() {
           @SuppressWarnings("UnnecessaryLocalVariable")
@@ -30,6 +40,7 @@ public class MainApplication extends Application implements ReactApplication {
           // packages.add(new MyReactNativePackage());
           return packages;
         }
+    
 
         @Override
         protected String getJSMainModuleName() {
@@ -57,6 +68,8 @@ public class MainApplication extends Application implements ReactApplication {
     SoLoader.init(this, /* native exopackage */ false);
     initializeFlipper(this, getReactNativeHost().getReactInstanceManager());
   }
+
+
 
   /**
    * Loads Flipper in React Native templates. Call this in the onCreate method with something like
